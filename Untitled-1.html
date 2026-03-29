@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Donut | Gourmet Bakery</title>
+    <style>
+        /* CSS: Modern Bakery Aesthetic */
+        :root {
+            --primary: #ff85a2; /* Soft Pink */
+            --secondary: #d4af37; /* Gold */
+            --bg: #fffafb;
+            --dark: #4a4a4a;
+        }
+
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: var(--bg); margin: 0; color: var(--dark); }
+
+        /* Navigation Header */
+        header {
+            background: white; padding: 15px 10%; display: flex; 
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+
+        .nav-controls { display: flex; gap: 15px; }
+
+        .nav-btn {
+            background: var(--primary); color: white; border: none; padding: 10px 20px;
+            border-radius: 30px; cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+
+        .nav-btn:hover { background: var(--secondary); transform: translateY(-2px); }
+
+        /* Product Grid */
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; text-align: center; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+
+        .card {
+            background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;
+            border: 1px solid #f0f0f0; padding-bottom: 20px;
+        }
+
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(255, 133, 162, 0.2); }
+
+        .donut-img { width: 100%; height: 200px; object-fit: cover; background: #ffeef2; }
+
+        .card h3 { margin: 20px 0 5px; color: var(--primary); }
+
+        .price { font-size: 20px; font-weight: bold; color: var(--secondary); margin-bottom: 15px; }
+
+        .buy-btn {
+            background: #f8f9fa; border: 2px solid var(--primary); color: var(--primary);
+            padding: 10px 30px; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s;
+        }
+
+        .buy-btn:hover { background: var(--primary); color: white; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><span>🍩</span> The Golden Donut</div>
+        <div class="nav-controls">
+            <button class="nav-btn">View Shop</button>
+            <button class="nav-btn" id="cart-display">🛒 Cart: 0 | $0.00</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Freshly Baked Happiness</h1>
+        <p>Choose your favorite handcrafted treats</p>
+
+        <div class="grid">
+            <!-- Product 1 -->
+            <div class="card">
+                <div class="donut-img" style="background: radial-gradient(circle, #ffcbd1 30%, #ff85a2 100%);"></div>
+                <h3>Strawberry Dream</h3>
+                <p class="price">$3.50</p>
+                <button class="buy-btn" onclick="updateCart('Strawberry Dream', 3.50)">Buy Now</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="card">
+                <div class="donut-img" style="background: radial-gradient(circle, #f3e5ab 30%, #d4af37 100%);"></div>
+                <h3>Glazed Gold</h3>
+                <p class="price">$2.75</p>
+                <button class="buy-btn" onclick="updateCart('Glazed Gold', 2.75)">Buy Now</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="card">
+                <div class="donut-img" style="background: radial-gradient(circle, #6F4E37 30%, #3e2723 100%);"></div>
+                <h3>Midnight Choco</h3>
+                <p class="price">$3.25</p>
+                <button class="buy-btn" onclick="updateCart('Midnight Choco', 3.25)">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript: Interaction Logic
+        let count = 0;
+        let total = 0.00;
+
+        function updateCart(name, price) {
+            count++;
+            total += price;
+
+            // Update Header Display
+            const display = document.getElementById('cart-display');
+            display.innerText = `🛒 Cart: ${count} | $${total.toFixed(2)}`;
+
+            // Visual feedback
+            console.log(`Added ${name} to cart.`);
+        }
+    </script>
+
+</body>
+</html>
